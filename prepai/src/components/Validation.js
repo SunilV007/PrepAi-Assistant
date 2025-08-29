@@ -88,7 +88,7 @@ function Validation() {
       }).join('\n');
 
       // Request overall summary from the backend
-      const response = await axios.post('http://localhost:8000/chat', {
+      const response = await axios.post(`${API_URL}/chat`, {
         message: `
           You are an interview evaluator for a ${interviewData.jobRole} position.
           Please provide an overall assessment of this candidate based on the following interview:
