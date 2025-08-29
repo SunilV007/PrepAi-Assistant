@@ -160,6 +160,7 @@ function Assistant() {
       </div>
     </nav>
   );
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
   const generateQuestions = async (data) => {
     setLoading(true);
@@ -178,7 +179,7 @@ function Assistant() {
       for (let i = 0; i < 5; i++) {
         console.log(`Generating question ${i+1}...`);
         try {
-          const response = await axios.post('http://localhost:8000/chat', {
+          const response = await axios.post(`${API_URL}/chat`, {
             content_type: "question",
             role: data.jobRole,
             technology: data.techStack,
