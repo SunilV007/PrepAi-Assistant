@@ -19,6 +19,7 @@ function Validation() {
     generateFeedback();
   }, [location, navigate]);
 
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   const generateFeedback = async () => {
     const { questions, answers, interviewData } = location.state;
     setLoading(true);
@@ -43,7 +44,7 @@ function Validation() {
         }
 
         // Use the evaluation content type from the Python backend
-        const response = await axios.post('http://localhost:8000/chat', {
+        const response = await axios.post(`${API_URL}/chat`, {
           content_type: "evaluation",
           role: interviewData.jobRole,
           technology: interviewData.techStack,
